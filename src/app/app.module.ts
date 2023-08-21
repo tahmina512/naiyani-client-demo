@@ -2,15 +2,24 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+
+import { AppRoutingModule } from './app.routing.module';
+import { SigninComponent } from './signin/signin.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LeadsBannerComponent } from './leads-banner/leads-banner.component';
+import { LeadsListComponent } from './leads-banner/leads-list/leads-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingPageComponent,
+    SigninComponent,
+    LeadsBannerComponent,
+    LeadsListComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
