@@ -1,16 +1,16 @@
+@import "src/app/shared/variables.scss";
 .banner-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-image: url("../../assets/images/background.jpg");
+  @each $property, $value in $flex-center-styles {
+    #{$property}: $value;
+  }
+  // background-image: url("../../assets/images/background.jpg");
+  background-image: $backgroung-image;
   background-size: cover;
   background-position: center center;
   .banner-button {
     width: 24%;
-    height: 18%; 
-    padding: 15px 0; 
+    height: 18%;
+    padding: 15px 0;
     background-color: #8cacce;
     color: white;
     font-size: large;
@@ -22,7 +22,7 @@
     text-decoration: none;
 
     /*   hover effect */
-    transition: color 0.3s ease, border-bottom 0.3s ease; 
+    transition: color 0.3s ease, border-bottom 0.3s ease;
 
     &:hover {
       color: #135296; /* Change text color to blue on hover */
@@ -35,7 +35,7 @@
   // Add media query for smaller screens
   @media (max-width: 768px) {
     .banner-button {
-      font-size: 14px; // Adjust font size for smaller screens
+      font-size: 14px;
     }
   }
 }

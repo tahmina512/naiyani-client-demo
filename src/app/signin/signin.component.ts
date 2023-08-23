@@ -18,12 +18,7 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
-      password: [
-        '',
-        [
-          Validators.required,
-        ],
-      ],
+      password: ['', [Validators.required]],
     });
 
     this.signupForm = this.fb.group({
@@ -32,7 +27,7 @@ export class SigninComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(6),
+          Validators.minLength(5),
           Validators.pattern(/.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?].*/),
         ],
       ],
@@ -41,13 +36,11 @@ export class SigninComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-   
     }
   }
 
   signup() {
     if (this.signupForm.valid) {
-    
     }
   }
   switchToSignupForm() {
@@ -58,5 +51,3 @@ export class SigninComponent implements OnInit {
     this.showSignupForm = false;
   }
 }
-  
-

@@ -1,16 +1,16 @@
+@import "src/app/shared/variables.scss";
 .logo-container {
-  // background-color:#ADD8E6;
-  // background-color: #A2CFF5;
-  // background-color: #A2CFF5;
-  // background-color: #ADD8E6;
-  // background-image: url('assets/images/background.jpg');
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-image: url("../../assets/images/background.jpg");
-  background-size: cover; 
+  @each $property, $value in $flex-center-styles {
+    #{$property}: $value;
+  }
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  // height: 100vh;
+  // background-image: url("../../assets/images/background.jpg");
+  background-image: $backgroung-image;
+  background-size: cover;
   background-position: center center;
   .logo {
     width: auto;
@@ -18,12 +18,17 @@
     cursor: pointer;
   }
   @media (max-width: 768px) {
-    flex-direction: row;
-    padding: 0px;
-
     .logo {
-      width: auto;
+      width: 150px;
+      height: 75px;
       margin: 0;
+      padding: 0;
+    }
+    @media (max-width: 1170px) {
+      .logo {
+        width: 200px;
+        height: auto;
+      }
     }
   }
 }

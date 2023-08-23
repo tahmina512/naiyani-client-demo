@@ -1,12 +1,11 @@
+@import "src/app/shared/variables.scss";
 .login-container {
-  background-image: url("../../assets/images/background.jpg");
-  background-size: cover; // Adjust the background size as needed
+  @each $property, $value in $flex-center-styles {
+    #{$property}: $value;
+  }
+  background-image: $backgroung-image;
+  background-size: cover;
   background-position: center center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
 
   .logo {
     width: 200px;
@@ -27,6 +26,9 @@
         border: 1px solid #444444;
         border-radius: 5px;
         // background-color: #bbbfc4;
+        &:focus {
+          border: 2px solid #0c0c0c; /* Change color and thickness as needed */
+        }
       }
 
       label {

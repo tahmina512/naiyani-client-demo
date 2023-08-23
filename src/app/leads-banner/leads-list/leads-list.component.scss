@@ -1,0 +1,36 @@
+.custom-header {
+  th {
+    background-color: #f8f9fa;
+    border-right: none;
+    padding: 4px;
+    // border: 1px solid black; /* Add border to header cells */
+    text-align: center;
+    overflow-wrap: break-word;
+    font-size: x-small;
+  }
+  margin: 10px 5px 0 5px;
+}
+
+.custom-row {
+  td {
+    /* Add bottom border to each cell */
+    // background-color: rgb(218, 237, 255);
+    border-bottom: 1px dotted #ccc;
+    padding: 2px;
+    /* Remove borders from other sides */
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+}
+.custom-data {
+  td {
+    text-align: center;
+  }
+}
+.table-name {
+  text-align: right;
+  margin: 10px 5px 10px 5px;
+  font-size: large;
+}
+
