@@ -11,26 +11,26 @@
     width: 24%;
     height: 18%;
     padding: 15px 0;
-    background-color: #8cacce;
-    color: white;
+    background: linear-gradient(to right, #ccc, #f4f4f4);
+    // background-color: rgb(235, 235, 235);
+    color:  #333;
     font-size: large;
-    border: 1px solid rgb(124, 124, 153);
+    border: 1px solid gray;
     // border-radius: 10px;
     margin: 12px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
+    font-weight: bold;
 
     /*   hover effect */
     transition: color 0.3s ease, border-bottom 0.3s ease;
 
     &:hover {
-      color: #135296; /* Change text color to blue on hover */
-      border-bottom: 2px solid #007bff; /* Show line underneath on hover */
+      color: rgb(68, 67, 67); /* Change text color to blue on hover */
+      border-bottom: 2px solid rgb(68, 67, 67);  /* Show line underneath on hover */
       text-decoration: underline; /* Add underline on hover */
     }
-    // word-wrap: break-word;//
-    //  overflow-wrap: break-word;
   }
   // Add media query for smaller screens
   @media (max-width: 768px) {
