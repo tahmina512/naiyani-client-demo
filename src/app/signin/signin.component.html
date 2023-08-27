@@ -37,8 +37,9 @@
           <button type="submit" [disabled]="loginForm.invalid">Login</button></a
         >
       </form>
-      <p class="switch-link" (click)="switchToSignupForm()">
-        Don't have an account yet? <a>Create one</a>
+      <p class="switch-link">
+        Don't have an account yet?
+        <a (click)="switchToSignupForm()">Create one</a>
       </p>
     </div>
   </ng-container>
@@ -92,8 +93,8 @@
           </button></a
         >
       </form>
-      <p class="switch-link" (click)="switchToLoginForm()">
-        Already have an account? <a>Log in.</a>
+      <p class="switch-link">
+        Already have an account? <a (click)="switchToLoginForm()">Log in.</a>
       </p>
     </div>
   </ng-template>
