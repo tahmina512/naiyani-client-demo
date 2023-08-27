@@ -7,6 +7,7 @@
     text-align: center;
     overflow-wrap: break-word;
     font-size: x-small;
+    
   }
   margin: 10px 5px 0 5px;
 }
@@ -33,4 +34,10 @@
   margin: 10px 5px 10px 5px;
   font-size: large;
 }
+
+.product-image {
+  max-width: 70px; /* Adjust as needed */
+  max-height: 70px; /* Adjust as needed */
+}
+
 
