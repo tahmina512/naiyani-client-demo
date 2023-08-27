@@ -1,59 +1,75 @@
 <!-- <p>leads-list works!</p> -->
 <div class="table-name"><b style="color: rgb(49, 9, 87)">Leads List</b></div>
 <div class="custom-header custom-row">
-  <p-table [value]="product" class="custom-data">
-    <ng-template pTemplate="header">
-      <tr
-        style="
-          box-shadow: 0px 0px 0px 10px white;
-          border: 1px solid rgb(10, 10, 10);
-        "
-      >
-        <th>PRODUCT IMAGE</th>
-        <th>PRODUCT NAME</th>
-        <th>ASIN</th>
-        <th>AMAZON FBA ESTIMATED FEES</th>
-        <th>ESTIMATED MONTHLY SALES</th>
-        <th>EST.SALES RANK</th>
-        <th>SALES RANK(30 DAYS)</th>
-        <th>SALES RANK(90 DAYS)</th>
-        <th>SOURCING URL</th>
-        <th>SOURCING PRICE</th>
-        <th>AMAZON URL</th>
-        <th>AMAZON PRICE</th>
-        <th>AMAZON ON LISTING</th>
-        <th>NUMBER OF SELLERS ON THE LISTINGS</th>
-        <th>NUMBER OF REVIEWS</th>
-        <th>ESTIMATED GROSS PROFIT</th>
-        <th>ESTIMATED GROSS PROFIT MARGIN</th>
-        <th>ESTIMATED NET PROFIT</th>
-        <th>ESTIMATED NET PROFIT MARGIN</th>
-      </tr>
-    </ng-template>
+  <div>
+    <p-table
+      [value]="product"
+      class="custom-data pagination"
+      [paginator]="true"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    >
+      <ng-template pTemplate="header">
+        <tr
+          style="
+            box-shadow: 0px 0px 0px 10px white;
+            border: 1px solid rgb(10, 10, 10);
+          "
+        >
+          <th>PRODUCT IMAGE</th>
+          <th>PRODUCT NAME</th>
+          <th>ASIN</th>
+          <th>AMAZON FBA ESTIMATED FEES</th>
+          <th>ESTIMATED MONTHLY SALES</th>
+          <th>EST.SALES RANK</th>
+          <th>SALES RANK(30 DAYS)</th>
+          <th>SALES RANK(90 DAYS)</th>
+          <th>SOURCING URL</th>
+          <th>SOURCING PRICE</th>
+          <th>AMAZON URL</th>
+          <th>AMAZON PRICE</th>
+          <th>AMAZON ON LISTING</th>
+          <th>NUMBER OF SELLERS ON THE LISTINGS</th>
+          <th>NUMBER OF REVIEWS</th>
+          <th>ESTIMATED GROSS PROFIT</th>
+          <th>ESTIMATED GROSS PROFIT MARGIN</th>
+          <th>ESTIMATED NET PROFIT</th>
+          <th>ESTIMATED NET PROFIT MARGIN</th>
+        </tr>
+      </ng-template>
 
-    <ng-template pTemplate="body" let-pro>
-      <tr>
-        <!-- <td>{{ pro.vin  }}</td> -->
-        <td><img [src]="pro.ImageLink" alt="Product Image" class="product-image" /></td>
-        <td style="text-align: left;" >{{ pro.ProductName }}</td>
-        <td>{{ pro.ASIN }}</td>
-        <td>{{ pro.AmazonFBAEstimatedFees }}</td>
-        <td>{{ pro.EstimatedMonthlySales }}</td>
-        <td>{{ pro.EstimatedSalesRank }}</td>
-        <td>{{ pro.SalesRank30days }}</td>
-        <td>{{ pro.SalesRank90days }}</td>
-        <td><a [href]="pro.SourcingURL" target="_blank" >Website link</a></td>
-        <td>{{ pro.SourcingPrice }}</td>
-        <td><a [href]="pro.AmazonURL" target="_blank" >click here</a></td>
-        <td>{{ pro.AmazonPrice }}</td>
-        <td>{{ pro.AmazonOnListing }}</td>
-        <td>{{ pro.NumberOfSellersOnTheListing }}</td>
-        <td>{{ pro.NumberOfReviews }}</td>
-        <td>{{ pro.EstimatedGrossProfit }}</td>
-        <td>{{ pro.EstimatedGrossProfitMargin }}</td>
-        <td>{{ pro.EstimatedNetProfit }}</td>
-        <td>{{ pro.EstimatedNetProfitMargin }}</td>
-      </tr>
-    </ng-template>
-  </p-table>
+      <ng-template pTemplate="body" let-pro>
+        <tr>
+          <!-- <td>{{ pro.vin  }}</td> -->
+          <td>
+            <img
+              [src]="pro.ImageLink"
+              alt="Product Image"
+              class="product-image"
+            />
+          </td>
+          <td style="text-align: left">{{ pro.ProductName }}</td>
+          <td>{{ pro.ASIN }}</td>
+          <td>{{ pro.AmazonFBAEstimatedFees }}</td>
+          <td>{{ pro.EstimatedMonthlySales }}</td>
+          <td>{{ pro.EstimatedSalesRank }}</td>
+          <td>{{ pro.SalesRank30days }}</td>
+          <td>{{ pro.SalesRank90days }}</td>
+          <td><a [href]="pro.SourcingURL" target="_blank">Website link</a></td>
+          <td>{{ pro.SourcingPrice }}</td>
+          <td><a [href]="pro.AmazonURL" target="_blank">click here</a></td>
+          <td>{{ pro.AmazonPrice }}</td>
+          <td>{{ pro.AmazonOnListing }}</td>
+          <td>{{ pro.NumberOfSellersOnTheListing }}</td>
+          <td>{{ pro.NumberOfReviews }}</td>
+          <td>{{ pro.EstimatedGrossProfit }}</td>
+          <td>{{ pro.EstimatedGrossProfitMargin }}</td>
+          <td>{{ pro.EstimatedNetProfit }}</td>
+          <td>{{ pro.EstimatedNetProfitMargin }}</td>
+        </tr>
+        <tr></tr
+      ></ng-template>
+    </p-table>
+  </div>
 </div>
