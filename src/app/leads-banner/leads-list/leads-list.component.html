@@ -34,26 +34,25 @@
     <ng-template pTemplate="body" let-pro>
       <tr>
         <!-- <td>{{ pro.vin  }}</td> -->
-        <td><img [src]="pro.pro_img" alt="Product Image" width="70" /></td>
-
-        <td>{{ pro.pro_name }}</td>
-        <td>{{ pro.asIn }}</td>
-        <td>{{ pro.eFee }}</td>
-        <td>{{ pro.monthlySales }}</td>
-        <td>{{ pro.estRank }}</td>
-        <td>{{ pro.eRank30 }}</td>
-        <td>{{ pro.eRank90 }}</td>
-        <td>{{ pro.srcUrl }}</td>
-        <td>{{ pro.scrPrice }}</td>
-        <td>{{ pro.amazonUrl }}</td>
-        <td>{{ pro.amazonPrice }}</td>
-        <td>{{ pro.amazonList }}</td>
-        <td>{{ pro.noOfsellers }}</td>
-        <td>{{ pro.noOfReviews }}</td>
-        <td>{{ pro.estGrossProfit }}</td>
-        <td>{{ pro.estProfitMargin }}</td>
-        <td>{{ pro.estNetProft }}</td>
-        <td>{{ pro.netProfitMargin }}</td>
+        <td><img [src]="pro.ImageLink" alt="Product Image" class="product-image" /></td>
+        <td style="text-align: left;" >{{ pro.ProductName }}</td>
+        <td>{{ pro.ASIN }}</td>
+        <td>{{ pro.AmazonFBAEstimatedFees }}</td>
+        <td>{{ pro.EstimatedMonthlySales }}</td>
+        <td>{{ pro.EstimatedSalesRank }}</td>
+        <td>{{ pro.SalesRank30days }}</td>
+        <td>{{ pro.SalesRank90days }}</td>
+        <td><a [href]="pro.SourcingURL" target="_blank" >Website link</a></td>
+        <td>{{ pro.SourcingPrice }}</td>
+        <td><a [href]="pro.AmazonURL" target="_blank" >click here</a></td>
+        <td>{{ pro.AmazonPrice }}</td>
+        <td>{{ pro.AmazonOnListing }}</td>
+        <td>{{ pro.NumberOfSellersOnTheListing }}</td>
+        <td>{{ pro.NumberOfReviews }}</td>
+        <td>{{ pro.EstimatedGrossProfit }}</td>
+        <td>{{ pro.EstimatedGrossProfitMargin }}</td>
+        <td>{{ pro.EstimatedNetProfit }}</td>
+        <td>{{ pro.EstimatedNetProfitMargin }}</td>
       </tr>
     </ng-template>
   </p-table>

@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LeadsBannerComponent } from './leads-banner/leads-banner.component';
 import { LeadsListComponent } from './leads-banner/leads-list/leads-list.component';
 import { TableModule } from 'primeng/table';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,7 @@ import { TableModule } from 'primeng/table';
     LeadsBannerComponent,
     LeadsListComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, TableModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, TableModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
