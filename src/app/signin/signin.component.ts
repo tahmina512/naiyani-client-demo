@@ -12,7 +12,6 @@ export class SigninComponent implements OnInit {
   loginForm: FormGroup;
   signupForm: FormGroup;
   showSignupForm = false;
-
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {

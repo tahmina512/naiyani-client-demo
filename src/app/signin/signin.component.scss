@@ -42,22 +42,33 @@
     }
     button {
       padding: 10px 20px;
-      background-color: #007bff;
+      background-color: #727577;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       &:disabled {
-        background-color: #c0c0c0; // Lighter color for disabled state
+        background-color: #949393; // Lighter color for disabled state
         cursor: not-allowed;
       }
     }
 
     .switch-link {
       margin-top: 10px;
-      color: #072c53;
+      color: #333;
       font-weight: bold;
       cursor: pointer;
     }
+  }
+  .password-container {
+    position: relative;
+  }
+
+  .password-toggle {
+    position: absolute;
+    top: 70%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
   }
 }
