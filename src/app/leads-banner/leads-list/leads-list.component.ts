@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Leads } from '../leads.model';
 import { LeadsBannerService } from '../leads-banner.service';
 import { LazyLoadEvent } from 'primeng/api';
-import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-leads-list',
@@ -10,29 +9,22 @@ import { PrimeNGConfig } from 'primeng/api';
   styleUrls: ['./leads-list.component.scss'],
 })
 export class LeadsListComponent implements OnInit {
-  product: Leads[] = [];
   totalRecords: number = 0;
+  product: Leads[] = [];
   loading: boolean = true;
-  limit: number = 15;
-
-  constructor(
-    private leadsBannerService: LeadsBannerService,
-    private primengConfig: PrimeNGConfig
-  ) {}
+  limit: number = 10;
+  constructor(private leadsBannerService: LeadsBannerService) {}
 
   ngOnInit() {}
-
   loadLeadsList($event: LazyLoadEvent) {
     this.loading = true;
     console.log($event);
-    this.leadsBannerService.setAllLeads($event.first || 0, this.limit);
-    this.leadsBannerService.leadsChanged.subscribe((leads: Leads[]) => {
-      this.loading = false;
-      this.product = leads;
-      this.totalRecords = this.leadsBannerService.getTotalRecords();
-      console.log(this.totalRecords);
-    });
-    // this.loading = true;
-    // this.primengConfig.ripple = true;
+    this.leadsBannerService
+      .setAllLeads($event.first || 0, this.limit)
+      .subscribe((data) => {
+        this.loading = false;
+        this.product = data.data;
+        this.totalRecords = data.count;
+      });
   }
 }
