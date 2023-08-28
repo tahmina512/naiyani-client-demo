@@ -17,7 +17,7 @@ export class LeadsListComponent implements OnInit {
     this.leadsBannerService.setAllLeads();
     this.leadsBannerService.leadsChanged.subscribe((leads: Leads[]) => {
       this.product = leads;
-      console.log(this.product); // Now the product array should be populated
+      console.log(this.product); 
     });
   }
 }

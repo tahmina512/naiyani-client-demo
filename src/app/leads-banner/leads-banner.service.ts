@@ -14,10 +14,9 @@ export class LeadsBannerService{
     private leads:Leads[] = [];
 
     setAllLeads(){
-        this.http.get<Leads[]>('http://localhost:3000/product-list/all-leads')
+        this.http.get<any>('http://localhost:3000/product-list/all-leads')
                               .subscribe(leads => {
-                                this.leads=leads;
-                                console.log(this.leads);
+                                this.leads=leads.data;
                                 this.leadsChanged.next(this.leads.slice());
                             })
         
