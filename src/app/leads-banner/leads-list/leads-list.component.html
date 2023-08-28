@@ -1,15 +1,27 @@
 <!-- <p>leads-list works!</p> -->
 <div class="table-name"><b style="color: rgb(49, 9, 87)">Leads List</b></div>
 <div class="custom-header custom-row">
-  <div>
+  <div class="card">
     <p-table
       [value]="product"
-      class="custom-data pagination"
+      [paginator]="true"
+      [rows]="rows"
+      [showCurrentPageReport]="true"
+      [(first)]="first"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[5, 8, 10]"
+    >
+      <!-- <div>
+    <p-table
+      [value]="product"
+      class="custom-data"
+      [lazy]="true"
+      (onLazyLoad)="loadCustomers($event)"
       [paginator]="true"
       [rows]="5"
-      [showCurrentPageReport]="true"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    >
+      [totalRecords]="totalRecords"
+      [loading]="loading"
+    > -->
       <ng-template pTemplate="header">
         <tr
           style="
