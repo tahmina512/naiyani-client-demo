@@ -10,21 +10,18 @@ export class LeadsBannerService {
   leadsChanged = new Subject<Leads[]>();
 
   private leads: Leads[] = [];
-  private totalRecords: number;
+  private totalRecords: number = 0;
 
-  setAllLeads() {
-    this.fetchLeads(0, 29); // Fetch the initial page
-  }
-
-  fetchLeads(skip: number, limit: number) {
-    this.http
+  setAllLeads(skip: number, limit: number) {
+    return this.http
       .get<any>(
         `http://localhost:3000/product-list/all-leads?skip=${skip}&limit=${limit}`
       )
       .subscribe((leadsData) => {
         this.leads = leadsData.data;
-        this.totalRecords = leadsData.page_total;
-        console.log('leadsData.page_total', leadsData.page_total);
+        this.totalRecords = leadsData.count;
+        // console.log(this.leads);
+        console.log('leadsData.page_total', this.totalRecords);
         this.leadsChanged.next(this.leads);
       });
   }

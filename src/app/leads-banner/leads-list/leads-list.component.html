@@ -5,23 +5,13 @@
     <p-table
       [value]="product"
       [paginator]="true"
-      [rows]="rows"
-      [showCurrentPageReport]="true"
-      [(first)]="first"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      [rowsPerPageOptions]="[5, 8, 10]"
-    >
-      <!-- <div>
-    <p-table
-      [value]="product"
-      class="custom-data"
+      [rows]="limit"
       [lazy]="true"
-      (onLazyLoad)="loadCustomers($event)"
-      [paginator]="true"
-      [rows]="5"
+      (onLazyLoad)="loadLeadsList($event)"
       [totalRecords]="totalRecords"
       [loading]="loading"
-    > -->
+      [rowsPerPageOptions]="[limit, 8, 10]"
+    >
       <ng-template pTemplate="header">
         <tr
           style="

@@ -12,42 +12,27 @@ import { PrimeNGConfig } from 'primeng/api';
 export class LeadsListComponent implements OnInit {
   product: Leads[] = [];
   totalRecords: number = 0;
-  loading: boolean;
-  currentPage: number = 1; // Initialize the current page to 1
-  first = 0;
-  rows = 10;
+  loading: boolean = true;
+  limit: number = 15;
+
   constructor(
     private leadsBannerService: LeadsBannerService,
     private primengConfig: PrimeNGConfig
   ) {}
 
-  ngOnInit() {
-    this.leadsBannerService.setAllLeads();
+  ngOnInit() {}
+
+  loadLeadsList($event: LazyLoadEvent) {
+    this.loading = true;
+    console.log($event);
+    this.leadsBannerService.setAllLeads($event.first || 0, this.limit);
     this.leadsBannerService.leadsChanged.subscribe((leads: Leads[]) => {
+      this.loading = false;
       this.product = leads;
       this.totalRecords = this.leadsBannerService.getTotalRecords();
-      this.loading = false;
+      console.log(this.totalRecords);
     });
-    this.loading = true;
-    this.primengConfig.ripple = true;
-  }
-  next() {
-    this.first = this.first + this.rows;
-  }
-
-  prev() {
-    this.first = this.first - this.rows;
-  }
-
-  reset() {
-    this.first = 0;
-  }
-
-  isLastPage(): boolean {
-    return this.product ? this.first === this.product.length - this.rows : true;
-  }
-
-  isFirstPage(): boolean {
-    return this.product ? this.first === 0 : true;
+    // this.loading = true;
+    // this.primengConfig.ripple = true;
   }
 }
