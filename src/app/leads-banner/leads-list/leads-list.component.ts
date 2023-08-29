@@ -13,18 +13,35 @@ export class LeadsListComponent implements OnInit {
   product: Leads[] = [];
   loading: boolean = true;
   limit: number = 10;
+  // errorMessage: string = '';
   constructor(private leadsBannerService: LeadsBannerService) {}
 
   ngOnInit() {}
   loadLeadsList($event: LazyLoadEvent) {
     this.loading = true;
-    console.log($event);
+    // console.log($event);
     this.leadsBannerService
       .setAllLeads($event.first || 0, this.limit)
-      .subscribe((data) => {
-        this.loading = false;
-        this.product = data.data;
-        this.totalRecords = data.count;
-      });
+      .subscribe(
+        (data) => {
+          this.loading = false;
+          this.product = data.data;
+          this.totalRecords = data.count;
+        },
+        (error) => {
+          this.loading = false;
+          console.error('Error loading leads:', error);
+
+          if (error.status === 200 && error.error?.message) {
+            console.error('Error message:', error.error.message);
+          } else if (error.status === 404) {
+            console.error('Resource not found');
+          } else if (error.status === 401) {
+            console.error('Unauthorized');
+          } else {
+            console.error('Unexpected error occurred');
+          }
+        }
+      );
   }
 }
