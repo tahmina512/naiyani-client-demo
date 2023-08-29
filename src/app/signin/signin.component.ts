@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthResponse, AuthService } from './auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-signin',
@@ -9,10 +12,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SigninComponent implements OnInit {
   //  @Input() logoUrl: string;
 
+
   loginForm: FormGroup;
   signupForm: FormGroup;
   showSignupForm = false;
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router,private authService:AuthService) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -35,13 +39,32 @@ export class SigninComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
+      
+      console.log();
+      const username = this.loginForm.value.username;
+      const password = this.loginForm.value.password;
+  
+      this.authService.login(username,password).subscribe(
+        resData => {
+          console.log(resData);
+          this.router.navigate(['/product-demo']);
+        }
 
-      console.log(this.loginForm.value.username)
+      );
     }
   }
 
   signup() {
     if (this.signupForm.valid) {
+      const signupUsername = this.loginForm.value.username;
+      const signupPassword = this.loginForm.value.password;
+      this.authService.signup(signupUsername,signupPassword)
+      .subscribe(
+        resData => {
+          console.log(resData);
+          this.router.navigate(['/product-demo']);
+        }
+      );  
     }
   }
   switchToSignupForm() {

@@ -1,11 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, tap } from 'rxjs';
+import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
+import { User } from './user.model';
 
 
 export interface AuthResponse{
-    _id:string,
-    userName:string,
+    _doc:{userName:string},
     accessToken:string,
     expiresIn:string,
 }
@@ -14,35 +14,75 @@ export interface AuthResponse{
 })
 export class AuthService {
 
+  user = new BehaviorSubject<User>(null) 
+
   constructor(private http:HttpClient) {}
 
-  signup(email:string,password:string){
-
-    return this.http.post("http://localhost:3000/auth/signup",
+  signup(userName:string,password:string){
+    
+    return this.http.post<AuthResponse>('http://localhost:3000/auth/signup',
     {
-      email:email,
-      password:password
+      userName:userName,
+      password:password,
     })
     .pipe(
-      catchError(this.handlError),
+      catchError(this.handleError),
       tap((resData)=>{
-         this.handleAuthentication(resData._id,resData.userName,resData.accessToken,resData.expiresIn);
+         this.handleAuthentication(resData._doc.userName,resData.accessToken,resData.expiresIn);
       })
     )
   }
 
-  login(email:string,password:string){
+  login(userName:string,password:string){
 
-    return this.http.post("http://localhost:3000/auth/login",
+    return this.http.post<AuthResponse>("http://localhost:3000/auth/login",
     {
-      email:email,
+      userName:userName,
       password:password
     })
     .pipe(
-      catchError(this.handlError),
+      catchError(this.handleError),
       tap((resData)=>{
-         this.handleAuthentication(resData._id,resData.userName,resData.accessToken,resData.expiresIn);
+         this.handleAuthentication(resData._doc.userName,resData.accessToken,resData.expiresIn);
       })
     )
   }
+
+  logout(){
+
+  }
+
+  private handleAuthentication(
+    username:string,
+    accessToken:string,
+    expiresIn:string){
+      const expirationDate =new Date(new Date().getTime() + +expiresIn * 1000);
+      const user = new User(username,accessToken,expirationDate);
+      this.user.next(user);
+      localStorage.setItem('userData',JSON.stringify(user));
+  }
+
+  private handleError(errorRes: HttpErrorResponse){
+        
+    let  errorMessage='An unexpected Error Occur';
+
+    if(!errorRes.error || !errorRes.error.error)
+    {
+
+    }
+
+    switch(errorRes.error.error.message){
+     case 'EMAIL_EXISTS':
+        errorMessage = 'Email address already exists'
+        break
+     case 'EMAIL_NOT_FOUND':
+        errorMessage = 'This email not registered!'
+        break
+     case 'INVALID_PASSWORD':
+        errorMessage = 'Wrong password!'
+        break
+   }
+    return throwError(errorMessage);
+ 
+}
 }
