@@ -35,6 +35,8 @@ export class SigninComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
+
+      console.log(this.loginForm.value.username)
     }
   }
 

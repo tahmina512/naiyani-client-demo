@@ -6,7 +6,9 @@
       <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="form-group">
           <label for="username">Username</label>
-          <input type="text" id="username" formControlName="username" />
+          <input type="text"
+                 id="username"
+                 formControlName="username" />
           <div
             *ngIf="
               loginForm.get('username').invalid &&
@@ -21,7 +23,9 @@
 
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" formControlName="password" />
+          <input type="password"
+                 id="password"
+                 formControlName="password" />
           <div
             *ngIf="
               loginForm.get('password').invalid &&
@@ -34,7 +38,9 @@
           </div>
         </div>
         <a routerLink="/product-demo">
-          <button type="submit" [disabled]="loginForm.invalid">Login</button></a
+          <button 
+          type="submit"
+          [disabled]="loginForm.invalid">Login</button></a
         >
       </form>
       <p class="switch-link">
