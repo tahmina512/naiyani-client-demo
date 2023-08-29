@@ -33,9 +33,8 @@
             Password is required
           </div>
         </div>
-        <a routerLink="/product-demo">
-          <button type="submit" [disabled]="loginForm.invalid">Login</button></a
-        >
+
+        <button type="submit" [disabled]="loginForm.invalid">Login</button>
       </form>
       <p class="switch-link">
         Don't have an account yet?
@@ -88,11 +87,7 @@
           </div>
         </div>
 
-        <a routerLink="/product-demo">
-          <button type="submit" [disabled]="signupForm.invalid">
-            Sign Up
-          </button></a
-        >
+        <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
       </form>
       <p class="switch-link">
         Already have an account? <a (click)="switchToLoginForm()">Log in.</a>

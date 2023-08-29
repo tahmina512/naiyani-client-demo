@@ -6,6 +6,7 @@
     padding: 4px;
     // border: 1px solid black; /* Add border to header cells */
     text-align: center;
+    text-align: center;
     overflow-wrap: break-word;
     font-size: x-small;
   }
@@ -17,6 +18,7 @@
     /* Add bottom border to each cell */
     // background-color: rgb(218, 237, 255);
     border-bottom: 1px dotted #ccc;
+    text-align: center;
     padding: 2px;
     /* Remove borders from other sides */
     border-top: none;

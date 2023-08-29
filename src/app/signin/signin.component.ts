@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -12,7 +13,7 @@ export class SigninComponent implements OnInit {
   loginForm: FormGroup;
   signupForm: FormGroup;
   showSignupForm = false;
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -35,11 +36,19 @@ export class SigninComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
+      const username = this.loginForm.get('username').value;
+      const password = this.loginForm.get('password').value;
+      console.log('Login Form Data:', { username, password });
+      this.router.navigate(['/product-demo']);
     }
   }
 
   signup() {
     if (this.signupForm.valid) {
+      const signupUsername = this.signupForm.get('signupUsername').value;
+      const signupPassword = this.signupForm.get('signupPassword').value;
+      console.log('Signup Form Data:', { signupUsername, signupPassword });
+      this.router.navigate(['/product-demo']);
     }
   }
   switchToSignupForm() {
