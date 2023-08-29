@@ -13,6 +13,8 @@ export class SigninComponent implements OnInit {
   loginForm: FormGroup;
   signupForm: FormGroup;
   showSignupForm = false;
+  showAlert: boolean = false;
+  alertMessage: string = '';
   constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
@@ -38,8 +40,12 @@ export class SigninComponent implements OnInit {
     if (this.loginForm.valid) {
       const username = this.loginForm.get('username').value;
       const password = this.loginForm.get('password').value;
-      console.log('Login Form Data:', { username, password });
-      this.router.navigate(['/product-demo']);
+      if (username === 'tisha' && password === '1234@') {
+        this.router.navigate(['/product-demo']);
+      } else {
+        this.alertMessage = 'Invalid Credentials. Please Try again';
+        this.showAlert = true;
+      }
     }
   }
 
@@ -48,7 +54,12 @@ export class SigninComponent implements OnInit {
       const signupUsername = this.signupForm.get('signupUsername').value;
       const signupPassword = this.signupForm.get('signupPassword').value;
       console.log('Signup Form Data:', { signupUsername, signupPassword });
-      this.router.navigate(['/product-demo']);
+      if (signupUsername === 'tisha') {
+        this.alertMessage = 'This account already exists';
+        this.showAlert = true;
+      } else {
+        this.router.navigate(['/product-demo']);
+      }
     }
   }
   switchToSignupForm() {
@@ -57,5 +68,8 @@ export class SigninComponent implements OnInit {
 
   switchToLoginForm() {
     this.showSignupForm = false;
+  }
+  closeAlert() {
+    this.showAlert = false;
   }
 }

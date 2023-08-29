@@ -23,6 +23,7 @@ import { LeadsListComponent } from './leads-banner/leads-list/leads-list.compone
 import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
 import { HttpClientModule } from '@angular/common/http';
+import { AlertComponent } from './shared/alert/alert.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     SigninComponent,
     LeadsBannerComponent,
     LeadsListComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
