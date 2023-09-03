@@ -1,4 +1,14 @@
-<div class="table-name"><b style="color: rgb(49, 9, 87)">Leads List</b></div>
+<div class="table-header">
+  <div class="table-name">
+    <b>Product Database</b>
+  </div>
+  
+  <div class="logo-container">
+    <img class="logo" src="assets/images/naiyani-log.png" alt="Logo" />
+  </div>
+</div>
+
+
 <div class="custom-header custom-row">
   <div class="card">
     <p-table
@@ -11,6 +21,7 @@
       [loading]="loading"
       [rowsPerPageOptions]="[5, 8, limit]"
     >
+      >
       <ng-template pTemplate="header">
         <tr
           style="
